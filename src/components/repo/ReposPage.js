@@ -32,7 +32,7 @@ class ReposPage extends React.Component {
           onClick={this.redirectToAddrepoPage}
         />
 
-        <RepoList repos={this.props.repos} />
+        <RepoList repos={repos} />
       </div>
     );
   }

@@ -6,7 +6,7 @@ const repoListRow = ({ repo }) => {
   return (
     <tr>
       <td>
-        <a href={repo.url} target="_blank">
+        <a href={repo.url} rel="noopener noreferrer" target="_blank">
           Click to open
         </a>
       </td>

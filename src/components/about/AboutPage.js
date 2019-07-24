@@ -15,8 +15,6 @@ const technologies = [
   "Selenium/Testcafe"
 ];
 
-console.log(technologies, technologies.length);
-
 const AboutPage = () => (
   <div>
     <h1>About</h1>
@@ -51,7 +49,7 @@ const AboutPage = () => (
       skilled in:
     </p>
     {technologies.map(option => {
-      return <li>{option}</li>;
+      return <li key={option.indexOf}>{option}</li>;
     })}
   </div>
 );

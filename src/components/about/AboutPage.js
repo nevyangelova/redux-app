@@ -48,8 +48,8 @@ const AboutPage = () => (
       microservice infrastructure. Below are listed some technologies I am
       skilled in:
     </p>
-    {technologies.map(option => {
-      return <li key={option.indexOf}>{option}</li>;
+    {technologies.map((option, i) => {
+      return <li key={i}>{option}</li>;
     })}
   </div>
 );

@@ -14,10 +14,10 @@ describe("Manage repo Page", () => {
       },
       repo: {
         id: "",
-        watchHref: "",
+        url: "",
         title: "",
         authorId: "",
-        length: "",
+        year: "",
         category: ""
       }
     };

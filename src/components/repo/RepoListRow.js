@@ -1,12 +1,13 @@
-import React, { PropTypes } from "react";
-import { Link } from "react-router";
+import React from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const repoListRow = ({ repo }) => {
   return (
     <tr>
       <td>
-        <a href={repo.watchHref} target="_blank">
-          Watch
+        <a href={repo.url} target="_blank">
+          Click to open
         </a>
       </td>
       <td>
@@ -14,7 +15,7 @@ const repoListRow = ({ repo }) => {
       </td>
       <td>{repo.authorId}</td>
       <td>{repo.category}</td>
-      <td>{repo.length}</td>
+      <td>{repo.year}</td>
     </tr>
   );
 };

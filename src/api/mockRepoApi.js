@@ -6,44 +6,43 @@ import delay from "./delay";
 const repos = [
   {
     id: "my-amplify-app",
-    title: "repo 1",
-    watchHref: "https://github.com/nevyangelova/my-amplify-app",
+    title: "My Amplify App",
+    url: "https://github.com/nevyangelova/my-amplify-app",
     authorId: "nevyangelova",
-    length: "5:08",
-    category: "practice"
+    year: "2019",
+    category: "Tool experiments"
   },
   {
     id: "coup-react-coding-challenge",
-    title: "repo 2",
-    watchHref: "https://github.com/nevyangelova/coup-react-coding-challenge",
+    title: "Coup Coding Challenge",
+    url: "https://github.com/nevyangelova/coup-react-coding-challenge",
     authorId: "nevyangelova",
-    length: "3:10",
-    category: "practice"
+    year: "2018",
+    category: "Coding challenge"
   },
   {
     id: "json-token-user-authentication",
-    title: "repo 3",
-    watchHref: "https://github.com/nevyangelova/json-token-user-authentication",
+    title: "Json Token Auth",
+    url: "https://github.com/nevyangelova/json-token-user-authentication",
     authorId: "nevyangelova",
-    length: "2:52",
-    category: "practice"
+    year: "2017",
+    category: "Practice"
   },
   {
     id: "javascript-development-environment",
-    title: "repo 4",
-    watchHref:
-      "https://github.com/nevyangelova/javascript-development-environment",
+    title: "JS Dev environment",
+    url: "https://github.com/nevyangelova/javascript-development-environment",
     authorId: "nevyangelova",
-    length: "2:30",
-    category: "practice"
+    year: "2017",
+    category: "Tool experiments"
   },
   {
     id: "movielist-autocomplete",
-    title: "repo 5",
-    watchHref: "https://github.com/nevyangelova/movielist-autocomplete",
+    title: "Movie List autocomplete",
+    url: "https://github.com/nevyangelova/movielist-autocomplete",
     authorId: "nevyangelova",
-    length: "5:10",
-    category: "practice"
+    year: "2017",
+    category: "Practice"
   }
 ];
 
@@ -74,11 +73,11 @@ class repoApi {
         }
 
         if (repo.id) {
-          const existingrepoIndex = repos.findIndex(a => a.id == repo.id);
+          const existingrepoIndex = repos.findIndex(a => a.id === repo.id);
           repos.splice(existingrepoIndex, 1, repo);
         } else {
           repo.id = generateId(repo);
-          repo.watchHref = `http://www.pluralsight.com/repos/${repo.id}`;
+          repo.url = `http://www.pluralsight.com/repos/${repo.id}`;
           repos.push(repo);
         }
 
@@ -90,9 +89,7 @@ class repoApi {
   static deleterepo(repoId) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        const indexOfrepoToDelete = repos.findIndex(repo => {
-          repo.id == repoId;
-        });
+        const indexOfrepoToDelete = repos.findIndex(repo => repo.id === repoId);
         repos.splice(indexOfrepoToDelete, 1);
         resolve();
       }, delay);

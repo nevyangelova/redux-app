@@ -1,4 +1,5 @@
-import React, { PropTypes } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import TextInput from "../common/TextInput";
 import SelectInput from "../common/SelectInput";
 
@@ -33,11 +34,11 @@ const repoForm = ({ repo, allAuthors, onSave, onChange, saving, errors }) => {
       />
 
       <TextInput
-        name="length"
-        label="Length"
-        value={repo.length}
+        name="year"
+        label="Year"
+        value={repo.year}
         onChange={onChange}
-        error={errors.length}
+        error={errors.year}
       />
 
       <input

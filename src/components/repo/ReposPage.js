@@ -1,7 +1,7 @@
-import React, { PropTypes } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { browserHistory } from "react-router";
 import * as repoActions from "../../actions/repoActions";
 import RepoList from "./RepoList";
 
@@ -17,14 +17,14 @@ class ReposPage extends React.Component {
   }
 
   redirectToAddrepoPage() {
-    browserHistory.push("/repo");
+    this.props.history.push("/repo");
   }
 
   render() {
     const { repos } = this.props;
     return (
       <div className="container-fluid">
-        <h1>repos</h1>
+        <h1>Repos</h1>
         <input
           type="submit"
           value="Add repo"

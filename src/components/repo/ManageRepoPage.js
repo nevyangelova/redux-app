@@ -1,4 +1,5 @@
-import React, { PropTypes } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as repoActions from "../../actions/repoActions";
@@ -21,8 +22,7 @@ export class ManageRepoPage extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.repo.id != nextProps.repo.id) {
-      // Necessary to populate form when existing repo is loaded directly.
+    if (this.props.repo.id !== nextProps.repo.id) {
       this.setState({ repo: Object.assign({}, nextProps.repo) });
     }
   }
@@ -56,7 +56,7 @@ export class ManageRepoPage extends React.Component {
 
     this.setState({ saving: true });
     this.props.actions
-      .saverepo(this.state.repo)
+      .saveRepo(this.state.repo)
       .then(() => this.redirect())
       .catch(error => {
         toastr.error(error);
@@ -67,7 +67,7 @@ export class ManageRepoPage extends React.Component {
   redirect() {
     this.setState({ saving: false });
     toastr.success("repo saved.");
-    this.context.router.push("/repos");
+    this.props.history.push("/repos");
   }
 
   render() {
@@ -90,26 +90,25 @@ ManageRepoPage.propTypes = {
   actions: PropTypes.object.isRequired
 };
 
-//Pull in the React Router context so router is available on this.context.router.
 ManageRepoPage.contextTypes = {
   router: PropTypes.object
 };
 
 function getrepoById(repos, id) {
-  const repo = repos.filter(repo => repo.id == id);
-  if (repo) return repo[0]; //since filter returns an array, have to grab the first.
+  const repo = repos.filter(repo => repo.id === id);
+  if (repo) return repo[0];
   return null;
 }
 
 function mapStateToProps(state, ownProps) {
-  const repoId = ownProps.params.id; // from the path `/repo/:id`
+  const repoId = ownProps.match.params.id;
 
   let repo = {
     id: "",
-    watchHref: "",
+    url: "",
     title: "",
     authorId: "",
-    length: "",
+    size: "",
     category: ""
   };
 

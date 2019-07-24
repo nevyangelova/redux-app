@@ -1,28 +1,28 @@
-import delay from './delay';
+import delay from "./delay";
 
 // This file mocks a web API by working with the hard-coded data below.
 // It uses setTimeout to simulate the delay of an AJAX call.
 // All calls return promises.
 const authors = [
   {
-    id: 'cory-house',
-    firstName: 'Cory',
-    lastName: 'House'
+    id: "nevy-angelova",
+    firstName: "Nevy",
+    lastName: "Angelova"
   },
   {
-    id: 'scott-allen',
-    firstName: 'Scott',
-    lastName: 'Allen'
+    id: "dan-abramov",
+    firstName: "Dan",
+    lastName: "Abramov"
   },
   {
-    id: 'dan-wahlin',
-    firstName: 'Dan',
-    lastName: 'Wahlin'
+    id: "kitze",
+    firstName: "The",
+    lastName: "Kitze"
   }
 ];
 
-const generateId = (author) => {
-  return author.firstName.toLowerCase() + '-' + author.lastName.toLowerCase();
+const generateId = author => {
+  return author.firstName.toLowerCase() + "-" + author.lastName.toLowerCase();
 };
 
 class AuthorApi {
@@ -35,20 +35,26 @@ class AuthorApi {
   }
 
   static saveAuthor(author) {
-	author = Object.assign({}, author);
+    author = Object.assign({}, author);
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         const minAuthorNameLength = 3;
         if (author.firstName.length < minAuthorNameLength) {
-          reject(`First Name must be at least ${minAuthorNameLength} characters.`);
+          reject(
+            `First Name must be at least ${minAuthorNameLength} characters.`
+          );
         }
 
         if (author.lastName.length < minAuthorNameLength) {
-          reject(`Last Name must be at least ${minAuthorNameLength} characters.`);
+          reject(
+            `Last Name must be at least ${minAuthorNameLength} characters.`
+          );
         }
 
         if (author.id) {
-          const existingAuthorIndex = authors.findIndex(a => a.id == author.id);
+          const existingAuthorIndex = authors.findIndex(
+            a => a.id === author.id
+          );
           authors.splice(existingAuthorIndex, 1, author);
         } else {
           author.id = generateId(author);
@@ -63,9 +69,9 @@ class AuthorApi {
   static deleteAuthor(authorId) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        const indexOfAuthorToDelete = authors.findIndex(author => {
-          author.id == authorId;
-        });
+        const indexOfAuthorToDelete = authors.findIndex(
+          author => author.id === authorId
+        );
         authors.splice(indexOfAuthorToDelete, 1);
         resolve();
       }, delay);
